@@ -1,5 +1,5 @@
 # Módulos customizados para Python (LINUX)
-- Screenshot;
+- Screenshot (Retorna uma imagem Pillow, para saber como manipular ver a documentacao do Pillow);
 # Dependencias:
 * gi.repository;
 	- *sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0*.
