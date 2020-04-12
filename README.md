@@ -6,3 +6,5 @@
 * Pillow;
 	- *pip install pillow*.
 	
+# Como adicionar ao seu projeto:
+Clone o repositorio com "git clone" na pasta de seu projeto, uma pasta chamada "custom_modules" ira aparecer, crie seu projeto um arquivo .py fora da pasta e, dentro desse arquivo, insira "from custom_modules.MODULO import Funcao". Para instalar o screenshot, por exemplo, insira "from custom_modules.screenshot import ImageGrab"
