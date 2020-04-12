@@ -1,19 +1,19 @@
+import gi
+gi.require_version('Gdk', '3.0')
 from gi.repository import Gdk
 from PIL import Image
-import time
+
+def get_pix_image(width=0, height=0, final_width=None, final_height=None):
+    win = Gdk.get_default_root_window()
+    if final_width == None:
+        final_width = win.get_width()
+    if final_height == None:
+        final_height = win.get_height()
+    pix_image = Gdk.pixbuf_get_from_window(win, width, height, final_width, final_height)
+    return pix_image
 
 
-win = Gdk.get_default_root_window()
-h = win.get_height()
-w = win.get_width()
-
-print ("The size of the window is %d x %d" % (w, h))
-
-init_time = time.time()
-pb = Gdk.pixbuf_get_from_window(win, w/2, w/2, w, h)
-
-def pixbuf2image(pix):
-    """Convert gdkpixbuf to PIL image"""
+def convert_to_PIL(pix):
     data = pix.get_pixels()
     w = pix.props.width
     h = pix.props.height
@@ -21,11 +21,9 @@ def pixbuf2image(pix):
     mode = "RGB"
     if pix.props.has_alpha == True:
         mode = "RGBA"
-    im = Image.frombytes(mode, (w, h), data, "raw", mode, stride)
-    return im
+    img = Image.frombytes(mode, (w, h), data, "raw", mode, stride)
+    return img
 
-if (pb != None):
-    print(pixbuf2image(pb).getpixel((0,0)))
-    print(time.time() - init_time)
-else:
-    print("Unable to get the screenshot.")
+
+def ImageGrab():
+    return convert_to_PIL(get_pix_image())
