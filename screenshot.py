@@ -25,5 +25,5 @@ def convert_to_PIL(pix):
     return img
 
 
-def ImageGrab():
-    return convert_to_PIL(get_pix_image())
+def ImageGrab(width=0, height=0, final_width=None, final_height=None):
+    return convert_to_PIL(get_pix_image(width, height, final_width, final_height))
