@@ -3,13 +3,13 @@ gi.require_version('Gdk', '3.0')
 from gi.repository import Gdk
 from PIL import Image
 
-def get_pix_image(width=0, height=0, final_width=None, final_height=None):
+def get_pix_image(x=0, y=0, width=None, height=None):
     win = Gdk.get_default_root_window()
-    if final_width == None:
+    if width == None:
         final_width = win.get_width()
-    if final_height == None:
+    if height == None:
         final_height = win.get_height()
-    pix_image = Gdk.pixbuf_get_from_window(win, width, height, final_width, final_height)
+    pix_image = Gdk.pixbuf_get_from_window(win, x, y, width, height)
     return pix_image
 
 
@@ -25,5 +25,5 @@ def convert_to_PIL(pix):
     return img
 
 
-def ImageGrab(width=0, height=0, final_width=None, final_height=None):
-    return convert_to_PIL(get_pix_image(width, height, final_width, final_height))
+def ImageGrab(x=0, y=0, width=None, height=None):
+    return convert_to_PIL(get_pix_image(x, y, width, height))
