@@ -6,9 +6,9 @@ from PIL import Image
 def get_pix_image(x=0, y=0, width=None, height=None):
     win = Gdk.get_default_root_window()
     if width == None:
-        final_width = win.get_width()
+        width = win.get_width()
     if height == None:
-        final_height = win.get_height()
+        height = win.get_height()
     pix_image = Gdk.pixbuf_get_from_window(win, x, y, width, height)
     return pix_image
 
